@@ -1,0 +1,8 @@
+ARG ORACLELINUX8SLIM_IMAGE
+FROM ${ORACLELINUX8SLIM_IMAGE:-oraclelinux:8-slim}
+
+# Container support
+USER 1001
+# WORKDIR /root
+
+CMD ["/bin/sleep", "3650d"]
