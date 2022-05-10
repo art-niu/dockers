@@ -12,9 +12,12 @@ RUN apt update && apt install -y \
   git \
   iputils-ping \
   mtr \
+  mysql-client \
   nmap \
+  postgresql-client \
   python3 \
   software-properties-common \  
+  telnet \
   tree \
   unzip \
   vim \
@@ -59,12 +62,11 @@ RUN export PATH=$PATH:/opt/asdf/bin:/opt/asdf/shims; export ASDF_DATA_DIR=/opt/a
   && asdf plugin-add helm \
   && asdf plugin-add kubectl \
   && asdf plugin-add k9s \
-  && asdf install kubectl 1.17.14 \
-  && asdf install kubectl 1.18.12 \
   && asdf install kubectl 1.19.9 \
   && asdf install kubectl 1.20.11 \
   && asdf install kubectl 1.21.5 \
   && asdf install kubectl 1.22.2 \
+  && asdf install kubectl 1.24.0 \
   && asdf install k9s 0.25.7 \
   && asdf install helm 3.1.3 \
   && asdf install helm 3.4.2 \
@@ -72,9 +74,10 @@ RUN export PATH=$PATH:/opt/asdf/bin:/opt/asdf/shims; export ASDF_DATA_DIR=/opt/a
   && asdf install helm 3.6.3 \
   && asdf install helm 3.7.1 \
   && asdf install terraform 0.14.11 \
-  && asdf install terraform 1.0.11 \
-  && asdf global terraform 1.0.11 \
-  && asdf global kubectl 1.19.9
+  && asdf install terraform 1.1.9 \
+  && asdf global helm 3.6.3 \
+  && asdf global kubectl 1.24.0 \
+  && asdf global terraform 1.1.9
 
 # Install kubectl krew
 
@@ -98,4 +101,3 @@ RUN curl https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install
 # ENV OCI_CLI_PROFILE=esi-azuread
 
 CMD ["/bin/sleep", "3650d"]
-
