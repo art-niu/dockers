@@ -2,7 +2,19 @@ ARG ORACLELINUX8SLIM_IMAGE
 FROM ${ORACLELINUX8SLIM_IMAGE:-oraclelinux:8-slim}
 
 # Container support
-USER 1001
+#USER 1001
+# Running user can be controlled in helm chart
+# SecurityContext: 
+#   runAsUser: 1001
+#   runAsNonRoot: true
+
+USER root
 # WORKDIR /root
 
-CMD ["/bin/sleep", "3650d"]
+RUN microdnf install -y \
+  bind-utils \
+  iputils \
+  telnet \
+  vim
+
+CMD ["/bin/sleep", "infinity"]
